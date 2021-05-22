@@ -1,0 +1,12 @@
+.wrapper {
+  background: #fff;
+  border-radius: 100%;
+  height: 3rem;
+  width: 3rem;
+}
+
+.logo {
+  height: 2.5rem;
+  width: 2.5;
+  margin: .25rem;
+}

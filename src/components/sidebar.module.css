@@ -1,0 +1,8 @@
+.wrapper {
+  width: 3rem;
+  padding: .5rem;
+}
+.list {
+  list-style: none;
+  padding: 0;
+}

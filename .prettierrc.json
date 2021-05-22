@@ -1,0 +1,14 @@
+{
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "semi": true,
+  "overrides": [
+    {
+      "files": "*.d.ts",
+      "options": {
+        "trailingComma": "es5"
+      }
+    }
+  ]
+}

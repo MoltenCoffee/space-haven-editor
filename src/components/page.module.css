@@ -1,0 +1,10 @@
+.wrapper {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+.internal {
+  display: flex;
+}
+.mainSection {
+  flex-grow: 1;
+}

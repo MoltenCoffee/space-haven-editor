@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: .25rem 3rem;
+  background-color: rgba(0,0,0,.2);
+}

@@ -1,0 +1,6 @@
+.button {
+  display: inline-block;
+  background: #102143;
+  font-family: 'Russo One', sans-serif;
+  border: 3px solid #a9f3f3;
+}

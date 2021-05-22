@@ -1,0 +1,8 @@
+{
+  "TestMessage": [
+    {
+      "type": 0,
+      "value": "Hello"
+    }
+  ]
+}

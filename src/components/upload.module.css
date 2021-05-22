@@ -1,0 +1,12 @@
+.msg {
+  display: inline-block;
+}
+.error {
+  color: red;
+}
+.notice {
+  color: white;
+}
+.warning {
+  color: yellow;
+}
