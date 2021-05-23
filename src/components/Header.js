@@ -4,7 +4,6 @@ import styles from "./header.module.css";
 import GitHub from "./GitHub";
 
 const Header = () => {
-  const thing = "";
 
   return (
     <header className={styles.wrapper}>

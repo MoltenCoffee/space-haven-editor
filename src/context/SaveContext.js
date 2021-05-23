@@ -1,6 +1,11 @@
 import { createContext, useReducer, useState } from "react";
+
+import { fileSave } from "browser-fs-access";
+
 import readXmlFile from "../lib/readXmlFile";
+import writeXmlFile from "../lib/writeXmlFile";
 import parseGameData from "../lib/parseGameData";
+import rewriteGameData from "../lib/rewriteGameData";
 
 export const SaveContext = createContext(null);
 
@@ -17,13 +22,17 @@ const gameReducer = (state, action) => {
       return initGameData({});
     case "plusResearch":
       newState.research.states[action.id].blocksDone._attributes[action.level] =
-        state.research.states[action.id].blocksDone._attributes[action.level] +
-        1;
+        parseInt(
+          state.research.states[action.id].blocksDone._attributes[action.level],
+          10,
+        ) + 1;
       break;
     case "minusResearch":
       newState.research.states[action.id].blocksDone._attributes[action.level] =
-        state.research.states[action.id].blocksDone._attributes[action.level] +
-        1;
+        parseInt(
+          state.research.states[action.id].blocksDone._attributes[action.level],
+          10,
+        ) + 1;
       break;
     case "setResearch":
       newState.research.states[action.id].blocksDone._attributes[action.level] =
@@ -33,7 +42,9 @@ const gameReducer = (state, action) => {
       newState.bank.credits = action.value;
       break;
     case "setShipName":
-      const shipIndex = newState.ships.findIndex((ship) => ship.name = action.name);
+      const shipIndex = newState.ships.findIndex(
+        (ship) => (ship.name = action.name),
+      );
       if (shipIndex >= 0) {
         newState.ships[shipIndex].name = action.value;
       }
@@ -52,9 +63,11 @@ const SaveProvider = ({ children }) => {
 
   const insertSaveData = async (blobs) => {
     setSaveData(blobs);
-    const gameFile = blobs.find((item) => item.name === "game");
+    // const gameFile = blobs.find((item) => item.name === "game");
+    const gameFile = blobs;
 
     if (gameFile) {
+      console.log(gameFile.handle);
       const data = await readXmlFile(gameFile);
       if (process.env.NODE_ENV === "development") {
         console.log(data);
@@ -64,9 +77,28 @@ const SaveProvider = ({ children }) => {
     }
   };
 
+  const retrieveGameData = async () => {
+    const newData = rewriteGameData(gameFile, gameData);
+    const newXml = await writeXmlFile(newData);
+    const file = new File([newXml], "game");
+
+    //const handle = saveData.find((item) => item.name === "game").handle;
+    const handle = saveData.handle;
+
+    console.log(file);
+    await fileSave(file, { fileName: "game" }, handle);
+  };
+
   return (
     <SaveContext.Provider
-      value={{ gameData, editGameData, gameFile, saveData, insertSaveData }}
+      value={{
+        gameData,
+        editGameData,
+        gameFile,
+        saveData,
+        insertSaveData,
+        retrieveGameData,
+      }}
     >
       {children}
     </SaveContext.Provider>

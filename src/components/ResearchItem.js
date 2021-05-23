@@ -15,11 +15,13 @@ const ResearchItem = ({ tree, item, current }) => {
   }
 
   const requiredAmmount =
-    details.req.level1 + details.req.level2 + details.req.level3;
+    parseInt(details.req.level1, 10) +
+    parseInt(details.req.level2, 10) +
+    parseInt(details.req.level3, 10);
   const currentAmmount =
-    item.blocksDone?._attributes?.level1 +
-    item.blocksDone?._attributes?.level2 +
-    item.blocksDone?._attributes?.level3;
+    parseInt(item.blocksDone?._attributes?.level1, 10) +
+    parseInt(item.blocksDone?._attributes?.level2, 10) +
+    parseInt(item.blocksDone?._attributes?.level3, 10);
 
   const percentage = currentAmmount
     ? Math.floor((currentAmmount / requiredAmmount) * 100)

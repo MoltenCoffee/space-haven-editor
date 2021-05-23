@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { directoryOpen } from "browser-fs-access";
+import { fileOpen } from "browser-fs-access";
 import { useIntl } from "react-intl";
 import clsx from "clsx";
 
@@ -18,7 +18,7 @@ const Upload = () => {
 
     let blobs;
     try {
-      blobs = await directoryOpen();
+      blobs = await fileOpen();
     } catch (err) {
       if (err.name === "AbortError") {
         // setMsg({ type: "error", text: "Aborted" });
@@ -27,11 +27,10 @@ const Upload = () => {
       setMsg({ type: "error", text: "Something went wrong" });
     }
 
-    if (!blobs.length) {
-      setMsg({ type: "error", text: "No files in directory" });
-    }
-
-    blobs.sort((a, b) => a.name.localeCompare(b.name, intl.locale));
+    // if (!blobs.length) {
+    //   setMsg({ type: "error", text: "No files in directory" });
+    // }
+    // blobs.sort((a, b) => a.name.localeCompare(b.name, intl.locale));
     await insertSaveData(blobs);
   };
 

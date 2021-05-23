@@ -6,7 +6,7 @@ const CrewStatBar = ({ type }) => {
 
   const strings = {
     health: formatMessage({ id: "health", defaultMessage: "Health" }),
-    energy: formatMessage({ id: "health", defaultMessage: "Energy" }),
+    energy: formatMessage({ id: "energy", defaultMessage: "Energy" }),
     hunger: formatMessage({ id: "hunger", defaultMessage: "Hunger" }),
   };
 
