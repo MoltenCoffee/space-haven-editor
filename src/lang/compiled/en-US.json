@@ -1,8 +1,44 @@
 {
-  "TestMessage": [
+  "energy": [
     {
       "type": 0,
-      "value": "Hello"
+      "value": "Energy"
+    }
+  ],
+  "gender_female": [
+    {
+      "type": 0,
+      "value": "Female"
+    }
+  ],
+  "gender_male": [
+    {
+      "type": 0,
+      "value": "Male"
+    }
+  ],
+  "health": [
+    {
+      "type": 0,
+      "value": "Health"
+    }
+  ],
+  "hunger": [
+    {
+      "type": 0,
+      "value": "Hunger"
+    }
+  ],
+  "welcome": [
+    {
+      "type": 0,
+      "value": "Welcome!"
+    }
+  ],
+  "welcome_comm": [
+    {
+      "type": 0,
+      "value": "Welcome commander!"
     }
   ]
 }

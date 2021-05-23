@@ -4,7 +4,7 @@ import Page from "../components/Page";
 import { SaveContext } from "../context/SaveContext";
 
 const Edit = () => {
-  const { gameData, editGameData } = useContext(SaveContext);
+  const { gameData, editGameData, retrieveGameData } = useContext(SaveContext);
   const { bank } = gameData;
   return (
     <Page>
@@ -14,12 +14,20 @@ const Edit = () => {
           defaultMessage="Welcome commander!"
         />
       </h2>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          retrieveGameData();
+        }}
+      >
+        Save
+      </button>
       <div>
         <label>
           <span>Credits:</span>
           <input
             type="number"
-            value={bank.credits}
+            value={parseInt(bank.credits, 10)}
             onChange={(e) => {
               editGameData({ type: "setCredits", value: e.target.value });
             }}

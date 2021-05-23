@@ -1,5 +1,23 @@
 {
-  "TestMessage": {
-    "defaultMessage": "Hello"
+  "energy": {
+    "defaultMessage": "Energy"
+  },
+  "gender_female": {
+    "defaultMessage": "Female"
+  },
+  "gender_male": {
+    "defaultMessage": "Male"
+  },
+  "health": {
+    "defaultMessage": "Health"
+  },
+  "hunger": {
+    "defaultMessage": "Hunger"
+  },
+  "welcome": {
+    "defaultMessage": "Welcome!"
+  },
+  "welcome_comm": {
+    "defaultMessage": "Welcome commander!"
   }
 }

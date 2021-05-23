@@ -12,6 +12,7 @@ const parseGameData = (data) => {
     output.ships = ships.ship.map((ship) => {
       const shipObject = {};
       shipObject.name = ship._attributes.sname;
+      shipObject.id = ship._attributes.sid;
       shipObject.characters = ship.characters?.c || [];
       // shipObject.monsters = ship.characters?.c || [];
       // shipObject.robots = ship.characters?.c || [];
@@ -24,6 +25,8 @@ const parseGameData = (data) => {
     output.crafts = crafts.c.map((craft) => {
       const craftObject = {};
 
+      craftObject.id = craft._attributes.id;
+      craftObject.name = craft._attributes.cname || null;
       craftObject.characters = craft.characters?.c || [];
       // craftObject.robots = craft.characters?.c || [];
 
