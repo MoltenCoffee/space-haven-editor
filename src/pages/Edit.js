@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { FormattedMessage } from "react-intl";
+import { Download } from "lucide-react";
 import Page from "../components/Page";
+import Button from "../components/Button";
 import { SaveContext } from "../context/SaveContext";
 
 const Edit = () => {
@@ -14,17 +16,35 @@ const Edit = () => {
           defaultMessage="Welcome commander!"
         />
       </h2>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          retrieveGameData();
-        }}
-      >
-        Save
-      </button>
       <div>
+        <p>
+          <FormattedMessage
+            id="edit_expl"
+            defaultMessage="Edit what you want, and return here to download the file again"
+          />
+        </p>
+        <Button
+          onClick={(e) => {
+            e.preventDefault();
+            retrieveGameData();
+          }}
+          style={{ fontSize: "120%" }}
+        >
+          <Download />
+          <span>
+            &nbsp;
+            <FormattedMessage id="download" defaultMessage="Download" />
+          </span>
+        </Button>
+      </div>
+      <div>
+        <h3>
+          <FormattedMessage id="general_edits" defaultMessage="General edits" />
+        </h3>
         <label>
-          <span>Credits:</span>
+          <span>
+            <FormattedMessage id="credits_monetary" defaultMessage="Credits" />:
+          </span>
           <input
             type="number"
             value={parseInt(bank.credits, 10)}

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CrewMember from "../components/CrewMember";
 import Page from "../components/Page";
+import Heading from "../components/Heading";
 import { SaveContext } from "../context/SaveContext";
 
 const Crew = () => {
@@ -14,10 +15,9 @@ const Crew = () => {
     characters = characters.concat(ship.characters);
   });
 
-  console.log(characters);
-
   return (
     <Page>
+      <Heading level={2} noFont>Crew</Heading>
       {characters.map(
         (char) =>
           char?._attributes?.name && (

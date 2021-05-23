@@ -1,18 +1,17 @@
 import { FormattedMessage } from "react-intl";
 import CrewStatBar from "./CrewStatBar";
-
+import Heading from "./Heading";
 import styles from "./crewmember.module.css";
 import { useIntl } from "react-intl";
 
 import { default as conditionDetails } from "../data/conditions";
 
 const CrewMember = ({ name, inSuit = false, gender, conditions }) => {
-  console.log(conditions);
   const { formatMessage } = useIntl();
   return (
     <div className={styles.wrapper} id={name}>
       <div className={styles.charDetails}>
-        <span>{name}</span>
+        <Heading level={3}>{name}</Heading>
         <span>
           {gender === "f"
             ? formatMessage({ id: "gender_female", defaultMessage: "Female" })
@@ -33,13 +32,20 @@ const CrewMember = ({ name, inSuit = false, gender, conditions }) => {
         </label>
       </div>
       <div>
-        <span>Conditions</span>
-        {conditions.map((condition) => {
-          if (condition._attributes.id == 0) {
-            return null;
-          }
-          return <div>{conditionDetails[condition._attributes.id]?.name || `Unknown: ${condition._attributes.id}`}</div>;
-        })}
+        <Heading level={4}>Conditions</Heading>
+        <ul>
+          {conditions.map((condition) => {
+            if (parseInt(condition._attributes.id, 10) === 0) {
+              return null;
+            }
+            return (
+              <li>
+                {conditionDetails[condition._attributes.id]?.name ||
+                  `Unknown: ${condition._attributes.id}`}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

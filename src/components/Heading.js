@@ -6,7 +6,7 @@ const Heading = ({ level = 1, noFont = false, children, ...other }) => {
 
   return (
     <HLevel
-      className={clsx(styles.heading, noFont && styles.noFont)}
+      className={clsx(styles.heading, (noFont || level > 2) && styles.noFont)}
       {...other}
     >
       {children}

@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "build": "cross-env BUILD_PATH='/docs' react-scripts build",
+    "build": "cross-env BUILD_PATH=docs react-scripts build",
     "extract-lang": "formatjs extract src/**/[A-Z]*.js --out-file src/lang/en-US.json",
     "compile-lang": "formatjs compile-folder --ast src/lang src/lang/compiled",
     "postcompile-lang": "node scripts/createLangExport"

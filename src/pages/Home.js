@@ -25,7 +25,12 @@ const Home = () => {
           This website is still under development, figuring out how the save
           files work and what values map to what consequences in-game.
         </p>
-        <h3>Upload save files</h3>
+        <h3>
+          <FormattedMessage
+            id="upload_file"
+            defaultMessage="Upload save file"
+          />
+        </h3>
         {!saveData ? (
           <>
             <p>
@@ -40,12 +45,17 @@ const Home = () => {
               <br />
               The save folder is either 'save' or 'autosaveX'
             </p>
+            <p>This app works best (by a small margin) in Chrome</p>
             <Upload />
           </>
         ) : (
-          <p>Loading...</p>
+          <p>
+            <FormattedMessage id="loading_dots" defaultMessage="Loading..." />
+          </p>
         )}
-        <h3>Disclaimer</h3>
+        <h3>
+          <FormattedMessage id="disclaimer" defaultMessage="Disclaimer" />
+        </h3>
         <p>
           This app is not endorsed or supported by BugByte or Space Haven in any
           way. Be sure to follow them:
