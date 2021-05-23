@@ -2,23 +2,30 @@ import { useContext } from "react";
 import Page from "../components/Page";
 import ResearchItem from "../components/ResearchItem";
 import { SaveContext } from "../context/SaveContext";
+import { default as researchInfo } from "../data/research";
 
 const Research = () => {
-  const { gameData } = useContext(SaveContext);
+  const {
+    gameData: { research },
+  } = useContext(SaveContext);
 
-  const attrs = gameData?.research?._attributes;
-  const states = gameData?.research?.states?.l;
+  const states = research.states;
+  const activeId = research.active;
 
   return (
     <Page>
-      <div>Active research: {(attrs && attrs.activeResearchId) || "None"}</div>
+      <div>
+        Active research:
+        {researchInfo[research.tree]?.[activeId]?.name || "None"}
+      </div>
       <div>
         {states &&
-          states.map((state) => (
+          Object.keys(states).map((state) => (
             <ResearchItem
-              key={state._attributes.techId}
-              tree={2535}
-              item={state}
+              key={states[state]._attributes.techId}
+              current={activeId}
+              tree={research.tree}
+              item={states[state]}
             />
           ))}
       </div>

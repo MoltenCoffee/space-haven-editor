@@ -1,3 +1,7 @@
 .heading {
   font-family: 'Russo One', sans-serif;
+  margin: 0;
+}
+.noFont {
+  font-family: inherit;
 }

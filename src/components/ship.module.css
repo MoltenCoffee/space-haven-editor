@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper a {
+  text-decoration: none;
+  color: inherit;
+}
+.crewLink {
+  text-decoration: none;
+}
+.titleBar {
+  display: flex;
+  align-items: start;
+  height: 2rem;
+}

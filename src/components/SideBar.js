@@ -1,4 +1,4 @@
-import { FlaskConical, Users, Circle } from "lucide-react";
+import { FlaskConical, Users, Circle, Plane, Trash2 } from "lucide-react";
 import NavLink from "./NavLink";
 
 import styles from "./sidebar.module.css";
@@ -16,6 +16,12 @@ const SideBar = () => {
           </NavLink>
           <NavLink to="/edit/crew" icon={<Users />}>
             Crew
+          </NavLink>
+          <NavLink to="/edit/ships" icon={<Plane />}>
+            Ships
+          </NavLink>
+          <NavLink to="/" icon={<Trash2 />}>
+            Discard
           </NavLink>
         </ul>
       </nav>

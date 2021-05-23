@@ -1,19 +1,80 @@
-import styles from "./researchitem.module.css";
+import { useContext } from "react";
+import clsx from "clsx";
+import { SaveContext } from "../context/SaveContext";
 import research from "../data/research";
+import ResearchFlask from "./ResearchFlask";
 
-const ResearchItem = ({tree, item}) => {
+import styles from "./researchitem.module.css";
+
+const ResearchItem = ({ tree, item, current }) => {
+  const { editGameData } = useContext(SaveContext);
   const techId = item?._attributes?.techId;
-
-  if (!techId) {
+  const details = research[tree]?.[techId];
+  if (!techId || !details || details.hidden) {
     return null;
   }
 
-  return <div className={styles.wrapper}>
-    <span>{research[tree]?.[techId]?.name}</span>
-    <div className={styles.progress}>
-      <div>percentage</div>
+  const requiredAmmount =
+    details.req.level1 + details.req.level2 + details.req.level3;
+  const currentAmmount =
+    item.blocksDone?._attributes?.level1 +
+    item.blocksDone?._attributes?.level2 +
+    item.blocksDone?._attributes?.level3;
+
+  const percentage = currentAmmount
+    ? Math.floor((currentAmmount / requiredAmmount) * 100)
+    : 0;
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const target = e.currentTarget;
+
+    editGameData({
+      type: `${target.dataset.action}Research`,
+      id: target.parentNode.dataset.techid,
+      level: `level${target.parentNode.dataset.level}`,
+    });
+  };
+
+  return (
+    <div
+      className={clsx(
+        styles.wrapper,
+        techId === current ? styles.active : null,
+      )}
+    >
+      <span>{details.name || "Unknown"}</span>
+      {percentage < 100 && (
+        <div className={styles.levelBar}>
+          <ResearchFlask
+            level={1}
+            techId={techId}
+            onChange={handleChange}
+            ammount={item.blocksDone?._attributes?.level1}
+          />
+          <ResearchFlask
+            level={2}
+            techId={techId}
+            onChange={handleChange}
+            ammount={item.blocksDone?._attributes?.level2}
+          />
+          <ResearchFlask
+            level={3}
+            techId={techId}
+            onChange={handleChange}
+            ammount={item.blocksDone?._attributes?.level3}
+          />
+        </div>
+      )}
+      <div className={styles.progress}>
+        <div
+          className={styles.progressBar}
+          style={{ width: `${percentage}%` }}
+        />
+        <span className={styles.progressMark}>{percentage}%</span>
+      </div>
     </div>
-  </div>
-}
+  );
+};
 
 export default ResearchItem;

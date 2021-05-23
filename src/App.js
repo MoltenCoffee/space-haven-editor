@@ -16,6 +16,7 @@ import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 import Crew from "./pages/Crew";
 import Research from "./pages/Research";
+import Ships from "./pages/Ships";
 
 const Internal = () => {
   return (
@@ -23,6 +24,7 @@ const Internal = () => {
       <Route path="/" element={<Edit />} />
       <Route path="crew" element={<Crew />} />
       <Route path="research" element={<Research />} />
+      <Route path="ships" element={<Ships />} />
     </Routes>
   );
 };

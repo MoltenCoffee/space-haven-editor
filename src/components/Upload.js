@@ -9,7 +9,7 @@ import Button from "./Button";
 import styles from "./upload.module.css";
 
 const Upload = () => {
-  const { setSaveData } = useContext(SaveContext);
+  const { insertSaveData } = useContext(SaveContext);
   const intl = useIntl();
   const [msg, setMsg] = useState(null);
 
@@ -21,7 +21,7 @@ const Upload = () => {
       blobs = await directoryOpen();
     } catch (err) {
       if (err.name === "AbortError") {
-        setMsg({ type: "error", text: "Aborted" });
+        // setMsg({ type: "error", text: "Aborted" });
         return;
       }
       setMsg({ type: "error", text: "Something went wrong" });
@@ -32,7 +32,7 @@ const Upload = () => {
     }
 
     blobs.sort((a, b) => a.name.localeCompare(b.name, intl.locale));
-    setSaveData(blobs);
+    await insertSaveData(blobs);
   };
 
   return (

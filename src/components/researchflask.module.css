@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 120%;
+}
+.wrapper > span {
+  padding: .4rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.flask {
+  font-size: 90%;
+}
+.iconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 90%;
+}
+.level1 {
+  composes: flask;
+  color: green;
+}
+.level2 {
+  composes: flask;
+  color: yellow;
+}
+.level3 {
+  composes: flask;
+  color: red;
+}

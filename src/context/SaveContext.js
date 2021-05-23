@@ -1,31 +1,73 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import readXmlFile from "../lib/readXmlFile";
+import parseGameData from "../lib/parseGameData";
 
 export const SaveContext = createContext(null);
 
+const initGameData = () => {
+  return {};
+};
+
+const gameReducer = (state, action) => {
+  const newState = { ...state };
+  switch (action.type) {
+    case "insert":
+      return action.state;
+    case "reset":
+      return initGameData({});
+    case "plusResearch":
+      newState.research.states[action.id].blocksDone._attributes[action.level] =
+        state.research.states[action.id].blocksDone._attributes[action.level] +
+        1;
+      break;
+    case "minusResearch":
+      newState.research.states[action.id].blocksDone._attributes[action.level] =
+        state.research.states[action.id].blocksDone._attributes[action.level] +
+        1;
+      break;
+    case "setResearch":
+      newState.research.states[action.id].blocksDone._attributes[action.level] =
+        action.value;
+      break;
+    case "setCredits":
+      newState.bank.credits = action.value;
+      break;
+    case "setShipName":
+      const shipIndex = newState.ships.findIndex((ship) => ship.name = action.name);
+      if (shipIndex >= 0) {
+        newState.ships[shipIndex].name = action.value;
+      }
+      break;
+    default:
+      return null;
+  }
+
+  return newState;
+};
+
 const SaveProvider = ({ children }) => {
   const [saveData, setSaveData] = useState(null);
-  const [gameData, setGameData] = useState(null);
+  const [gameFile, setGameFile] = useState(null);
+  const [gameData, editGameData] = useReducer(gameReducer, {}, initGameData);
 
-  useEffect(() => {
-    if (!saveData) {
-      return;
-    }
+  const insertSaveData = async (blobs) => {
+    setSaveData(blobs);
+    const gameFile = blobs.find((item) => item.name === "game");
 
-    const retrieveGameData = async () => {
-      const gameFile = saveData.find((item) => item.name === "game");
-
-      if (gameFile) {
-        const { game } = await readXmlFile(gameFile);
-        setGameData(game);
+    if (gameFile) {
+      const data = await readXmlFile(gameFile);
+      if (process.env.NODE_ENV === "development") {
+        console.log(data);
       }
-    };
-
-    retrieveGameData();
-  }, [saveData]);
+      setGameFile(data);
+      editGameData({ type: "insert", state: parseGameData(data) });
+    }
+  };
 
   return (
-    <SaveContext.Provider value={{ gameData, saveData, setSaveData }}>
+    <SaveContext.Provider
+      value={{ gameData, editGameData, gameFile, saveData, insertSaveData }}
+    >
       {children}
     </SaveContext.Provider>
   );

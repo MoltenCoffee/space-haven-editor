@@ -1,0 +1,4 @@
+.barWrapper {
+  width: 95%;
+  border: 1px solid var(--main-bg-color);
+}

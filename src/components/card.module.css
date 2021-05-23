@@ -1,0 +1,14 @@
+.wrapper {
+  padding: .5rem;
+  border-radius: .5rem;
+  margin: .5rem;
+}
+.inline {
+  display: inline-block;
+}
+.lighten {
+  background-color: rgba(255,255,255,.2);
+}
+.darken {
+  background-color: rgba(0,0,0,.2);
+}

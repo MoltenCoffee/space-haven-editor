@@ -1,7 +1,29 @@
 .progress {
-  width: 90%;
+  width: 95%;
   border-radius: .5rem;
   height: 1rem;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid var(--main-bg-color);
+}
+.progressBar {
+  height: 100%;
+  position: absolute;
+  background-color: green;
+}
+.progressMark {
+  top: -.05rem;
+  left: .5rem;
+  font-size: 90%;
+  display: block;
+  position: absolute;
+}
+.levelBar {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(255,255,255,.2);
+  border-radius: .5rem;
+  padding: .25rem;
 }
 .wrapper {
   min-width: 15rem;
@@ -13,4 +35,7 @@
   justify-content: space-between;
   border-radius: 1rem;
   background-color: rgba(255,255,255,.2);
+}
+.active {
+  background-color: rgba(255,125,255,.2);
 }

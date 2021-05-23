@@ -1,19 +1,31 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
+import { FormattedMessage } from "react-intl";
 import Page from "../components/Page";
 import { SaveContext } from "../context/SaveContext";
 
 const Edit = () => {
-  const { gameData } = useContext(SaveContext);
-
-  useEffect(() => {
-    if (gameData) {
-      console.log(gameData);
-    }
-  }, [gameData]);
-
+  const { gameData, editGameData } = useContext(SaveContext);
+  const { bank } = gameData;
   return (
     <Page>
-      <p>{JSON.stringify(gameData)}</p>
+      <h2>
+        <FormattedMessage
+          id="welcome_comm"
+          defaultMessage="Welcome commander!"
+        />
+      </h2>
+      <div>
+        <label>
+          <span>Credits:</span>
+          <input
+            type="number"
+            value={bank.credits}
+            onChange={(e) => {
+              editGameData({ type: "setCredits", value: e.target.value });
+            }}
+          />
+        </label>
+      </div>
     </Page>
   );
 };

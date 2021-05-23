@@ -1,0 +1,13 @@
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 10rem;
+  background-color: rgba(255,255,255,.2);
+  border-radius: .5rem;
+  margin: .5rem;
+  padding: .5rem;
+}
+.charDetails {
+  display: flex;
+  justify-content: space-between;
+}

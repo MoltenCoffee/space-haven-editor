@@ -9,7 +9,7 @@ const InternalRoute = ({ element, fallback }) => {
     fallback = <Navigate to="/" />;
   }
 
-  return gameData ? element : fallback;
+  return gameData.ships ? element : fallback;
 };
 
 export default InternalRoute;

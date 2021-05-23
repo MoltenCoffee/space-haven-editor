@@ -1,6 +1,6 @@
 import styles from "./button.module.css";
 
-const Button = ({ onClick, href, children }) => {
+const Button = ({ onClick, href, target = "_blank", children }) => {
   const handleClick = (e) => {
     if (e) {
       e.preventDefault();
@@ -11,7 +11,14 @@ const Button = ({ onClick, href, children }) => {
   };
 
   return href ? (
-    <a href={href} className={styles.button}>{children}</a>
+    <a
+      href={href}
+      className={styles.button}
+      rel="noreferrer noopener"
+      target={target}
+    >
+      {children}
+    </a>
   ) : (
     <button onClick={handleClick} className={styles.button}>
       {children}
