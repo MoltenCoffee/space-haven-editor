@@ -11,6 +11,6 @@
 }
 .titleBar {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   height: 2rem;
 }

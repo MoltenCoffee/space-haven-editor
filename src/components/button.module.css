@@ -1,9 +1,9 @@
 .button {
   display: inline-block;
-  background: #102143;
+  background-color: #102143;
   font-family: 'Russo One', sans-serif;
-  border-top: 3px solid #a9f3f3;
-  border-bottom: 3px solid #a9f3f3;
+  border-top: 2px solid #a9f3f3;
+  border-bottom: 2px solid #a9f3f3;
   border-left: 0;
   border-right: 0;
   color: #a9f3f3;
@@ -11,4 +11,8 @@
   cursor: pointer;
   text-decoration: none;
   border-radius: .25rem;
+}
+.button:hover {
+  background-color: #a9f3f3;
+  color: #102143;
 }

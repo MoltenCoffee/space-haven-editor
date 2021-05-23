@@ -1,6 +1,21 @@
 {
+  "change": {
+    "defaultMessage": "Change"
+  },
+  "created_by": {
+    "defaultMessage": "Created by"
+  },
+  "crew": {
+    "defaultMessage": "Crew"
+  },
+  "discard": {
+    "defaultMessage": "Discard"
+  },
   "energy": {
     "defaultMessage": "Energy"
+  },
+  "error_unknown": {
+    "defaultMessage": "Something went wrong"
   },
   "gender_female": {
     "defaultMessage": "Female"
@@ -11,8 +26,32 @@
   "health": {
     "defaultMessage": "Health"
   },
+  "home": {
+    "defaultMessage": "Home"
+  },
   "hunger": {
     "defaultMessage": "Hunger"
+  },
+  "in_suit": {
+    "defaultMessage": "in spacesuit"
+  },
+  "open_save": {
+    "defaultMessage": "Open Save"
+  },
+  "research": {
+    "defaultMessage": "Research"
+  },
+  "reset": {
+    "defaultMessage": "Reset"
+  },
+  "ships": {
+    "defaultMessage": "Ships"
+  },
+  "source_code": {
+    "defaultMessage": "Source Code on GitHub"
+  },
+  "title": {
+    "defaultMessage": "Space Haven Save Editor"
   },
   "welcome": {
     "defaultMessage": "Welcome!"

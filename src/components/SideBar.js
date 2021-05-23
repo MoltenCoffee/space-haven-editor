@@ -1,4 +1,5 @@
 import { FlaskConical, Users, Circle, Plane, Trash2 } from "lucide-react";
+import { FormattedMessage } from "react-intl";
 import NavLink from "./NavLink";
 
 import styles from "./sidebar.module.css";
@@ -9,19 +10,19 @@ const SideBar = () => {
       <nav>
         <ul className={styles.list}>
           <NavLink to="/edit" icon={<Circle />}>
-            Home
+            <FormattedMessage id="home" defaultMessage="Home" />
           </NavLink>
           <NavLink to="/edit/research" icon={<FlaskConical />}>
-            Research
+            <FormattedMessage id="research" defaultMessage="Research" />
           </NavLink>
           <NavLink to="/edit/crew" icon={<Users />}>
-            Crew
+            <FormattedMessage id="crew" defaultMessage="Crew" />
           </NavLink>
           <NavLink to="/edit/ships" icon={<Plane />}>
-            Ships
+            <FormattedMessage id="ships" defaultMessage="Ships" />
           </NavLink>
           <NavLink to="/" icon={<Trash2 />}>
-            Discard
+            <FormattedMessage id="discard" defaultMessage="Discard" />
           </NavLink>
         </ul>
       </nav>

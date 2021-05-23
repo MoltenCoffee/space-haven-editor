@@ -1,4 +1,5 @@
 import { useState, useContext, createRef } from "react";
+import { FormattedMessage } from "react-intl";
 import { Edit3 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -29,7 +30,7 @@ const Ship = ({ name, crew }) => {
                   });
                 }}
               >
-                Change
+                <FormattedMessage id="change" defaultMessage="Change" />
               </button>
               <button
                 onClick={(e) => {
@@ -37,7 +38,7 @@ const Ship = ({ name, crew }) => {
                   setEdit(false);
                 }}
               >
-                Reset
+                <FormattedMessage id="reset" defaultMessage="Reset" />
               </button>
             </>
           ) : (
@@ -57,7 +58,7 @@ const Ship = ({ name, crew }) => {
         </div>
         <div>
           <Heading level={4} noFont>
-            Crew
+            <FormattedMessage id="crew" defaultMessage="Crew" />
           </Heading>
           {crew?.map((member) => (
             <Link to={`/edit/crew#${member._attributes.name}`}>

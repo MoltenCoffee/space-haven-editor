@@ -1,3 +1,4 @@
+import { FormattedMessage } from "react-intl";
 import CrewStatBar from "./CrewStatBar";
 
 import styles from "./crewmember.module.css";
@@ -23,7 +24,9 @@ const CrewMember = ({ name, inSuit = false, gender }) => {
       <div>
         <label>
           <input type="checkbox" checked={inSuit} readOnly />
-          <span>in spacesuit</span>
+          <span>
+            <FormattedMessage id="in_suit" defaultMessage="in spacesuit" />
+          </span>
         </label>
       </div>
     </div>

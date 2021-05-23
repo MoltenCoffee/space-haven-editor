@@ -1,6 +1,8 @@
+import { useIntl } from "react-intl";
 import styles from "./github.module.css";
 
 const GitHub = () => {
+  const { formatMessage } = useIntl();
   return (
     <div className={styles.wrapper}>
       <a
@@ -8,7 +10,14 @@ const GitHub = () => {
         rel="noreferrer noopener"
         target="_blank"
       >
-        <img className={styles.logo} src="github64.png" alt="Source Code on GitHub" />
+        <img
+          className={styles.logo}
+          src="github64.png"
+          alt={formatMessage({
+            id: "source_code",
+            defaultMessage: "Source Code on GitHub",
+          })}
+        />
       </a>
     </div>
   );

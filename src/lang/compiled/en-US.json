@@ -1,8 +1,38 @@
 {
+  "change": [
+    {
+      "type": 0,
+      "value": "Change"
+    }
+  ],
+  "created_by": [
+    {
+      "type": 0,
+      "value": "Created by"
+    }
+  ],
+  "crew": [
+    {
+      "type": 0,
+      "value": "Crew"
+    }
+  ],
+  "discard": [
+    {
+      "type": 0,
+      "value": "Discard"
+    }
+  ],
   "energy": [
     {
       "type": 0,
       "value": "Energy"
+    }
+  ],
+  "error_unknown": [
+    {
+      "type": 0,
+      "value": "Something went wrong"
     }
   ],
   "gender_female": [
@@ -23,10 +53,58 @@
       "value": "Health"
     }
   ],
+  "home": [
+    {
+      "type": 0,
+      "value": "Home"
+    }
+  ],
   "hunger": [
     {
       "type": 0,
       "value": "Hunger"
+    }
+  ],
+  "in_suit": [
+    {
+      "type": 0,
+      "value": "in spacesuit"
+    }
+  ],
+  "open_save": [
+    {
+      "type": 0,
+      "value": "Open Save"
+    }
+  ],
+  "research": [
+    {
+      "type": 0,
+      "value": "Research"
+    }
+  ],
+  "reset": [
+    {
+      "type": 0,
+      "value": "Reset"
+    }
+  ],
+  "ships": [
+    {
+      "type": 0,
+      "value": "Ships"
+    }
+  ],
+  "source_code": [
+    {
+      "type": 0,
+      "value": "Source Code on GitHub"
+    }
+  ],
+  "title": [
+    {
+      "type": 0,
+      "value": "Space Haven Save Editor"
     }
   ],
   "welcome": [

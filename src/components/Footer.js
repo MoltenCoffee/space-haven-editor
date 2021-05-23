@@ -1,9 +1,12 @@
+import { FormattedMessage } from "react-intl";
+
 import styles from "./footer.module.css";
 
 const Footer = () => {
   return (
     <footer className={styles.wrapper}>
-      Created by{" "}
+      <FormattedMessage id="created_by" defaultMessage="Created by" />
+      &nbsp;
       <a
         href="https://github.com/MoltenCoffee"
         rel="noreferrer noopener"
