@@ -1,6 +1,6 @@
 import styles from "./button.module.css";
 
-const Button = ({ onClick, href, target = "_blank", children }) => {
+const Button = ({ onClick, href, target = "_blank", children, ...other }) => {
   const handleClick = (e) => {
     if (e) {
       e.preventDefault();
@@ -16,11 +16,12 @@ const Button = ({ onClick, href, target = "_blank", children }) => {
       className={styles.button}
       rel="noreferrer noopener"
       target={target}
+      {...other}
     >
       {children}
     </a>
   ) : (
-    <button onClick={handleClick} className={styles.button}>
+    <button onClick={handleClick} className={styles.button} {...other}>
       {children}
     </button>
   );

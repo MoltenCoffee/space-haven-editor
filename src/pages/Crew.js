@@ -26,6 +26,7 @@ const Crew = () => {
               name={char._attributes.name}
               inSuit={char._attributes?.is}
               gender={char._attributes.bs || char._attributes.bh}
+              conditions={char.pers.conditions.c}
             />
           ),
       )}

@@ -1,5 +1,7 @@
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #102143;
   font-family: 'Russo One', sans-serif;
   border-top: 2px solid #a9f3f3;

@@ -4,7 +4,10 @@ import CrewStatBar from "./CrewStatBar";
 import styles from "./crewmember.module.css";
 import { useIntl } from "react-intl";
 
-const CrewMember = ({ name, inSuit = false, gender }) => {
+import { default as conditionDetails } from "../data/conditions";
+
+const CrewMember = ({ name, inSuit = false, gender, conditions }) => {
+  console.log(conditions);
   const { formatMessage } = useIntl();
   return (
     <div className={styles.wrapper} id={name}>
@@ -28,6 +31,15 @@ const CrewMember = ({ name, inSuit = false, gender }) => {
             <FormattedMessage id="in_suit" defaultMessage="in spacesuit" />
           </span>
         </label>
+      </div>
+      <div>
+        <span>Conditions</span>
+        {conditions.map((condition) => {
+          if (condition._attributes.id == 0) {
+            return null;
+          }
+          return <div>{conditionDetails[condition._attributes.id]?.name || `Unknown: ${condition._attributes.id}`}</div>;
+        })}
       </div>
     </div>
   );
