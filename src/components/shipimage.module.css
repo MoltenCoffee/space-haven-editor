@@ -1,0 +1,4 @@
+.image {
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: pixelated;
+}

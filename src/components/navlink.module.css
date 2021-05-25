@@ -2,6 +2,7 @@
   font-size: 70%;
   font-weight: 600;
   line-height: 1.2;
+  cursor: pointer;
 }
 .box, .box a {
   text-decoration: none;

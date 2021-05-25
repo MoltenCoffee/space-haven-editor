@@ -10,7 +10,7 @@ const readXmlFile = async (file) => {
 
   return xml.xml2js(content, {
     compact: IS_COMPACT_OBJ,
-    alwaysArray: ["c", "ship", "l"],
+    alwaysArray: ["c", "ship", "l", "r", "m", "s", "t", "b", "e"],
   });
 };
 

@@ -15,8 +15,8 @@ const parseGameData = (data) => {
       shipObject.id = ship._attributes.sid;
       shipObject.tiles = ship.e;
       shipObject.characters = ship.characters?.c || [];
-      // shipObject.monsters = ship.characters?.c || [];
-      // shipObject.robots = ship.characters?.c || [];
+      shipObject.monsters = ship.characters?.m || [];
+      shipObject.robots = ship.characters?.r || [];
 
       return shipObject;
     });
@@ -29,21 +29,15 @@ const parseGameData = (data) => {
       craftObject.id = craft._attributes.id;
       craftObject.name = craft._attributes.cname || null;
       craftObject.characters = craft.characters?.c || [];
-      // craftObject.robots = craft.characters?.c || [];
+      craftObject.robots = craft.characters?.r || [];
 
       return craftObject;
     });
   }
 
   if (research?.states?.l) {
-    const states = {};
-
-    research.states.l.forEach(state => {
-      states[state._attributes.techId] = state;
-    });
-
     output.research = {
-      states,
+      states: research.states.l,
       tree: research._attributes?.treeId,
       active: research._attributes?.activeResearchId,
     };

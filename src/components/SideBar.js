@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { FlaskConical, Users, Circle, Plane, Trash2 } from "lucide-react";
 import { FormattedMessage } from "react-intl";
 import NavLink from "./NavLink";
-
+import { SaveContext } from "../context/SaveContext";
 import styles from "./sidebar.module.css";
 
 const SideBar = () => {
+  const { reset } = useContext(SaveContext);
+
   return (
     <div className={styles.wrapper}>
       <nav>
@@ -21,7 +24,7 @@ const SideBar = () => {
           <NavLink to="/edit/ships" icon={<Plane />}>
             <FormattedMessage id="ships" defaultMessage="Ships" />
           </NavLink>
-          <NavLink to="/" icon={<Trash2 />}>
+          <NavLink onClick={reset} icon={<Trash2 />}>
             <FormattedMessage id="discard" defaultMessage="Discard" />
           </NavLink>
         </ul>

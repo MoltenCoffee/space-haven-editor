@@ -8,6 +8,7 @@
   padding: .4rem;
   cursor: pointer;
   font-weight: 600;
+  user-select: none;
 }
 .flask {
   font-size: 90%;

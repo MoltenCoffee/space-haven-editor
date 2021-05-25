@@ -6,7 +6,7 @@ import ResearchFlask from "./ResearchFlask";
 
 import styles from "./researchitem.module.css";
 
-const ResearchItem = ({ tree, item, current }) => {
+const ResearchItem = ({ tree, item, finished = false, current = false, index }) => {
   const { editGameData } = useContext(SaveContext);
   const techId = item?._attributes?.techId;
   const details = research[tree]?.[techId];
@@ -14,16 +14,16 @@ const ResearchItem = ({ tree, item, current }) => {
     return null;
   }
 
-  const requiredAmmount =
-    parseInt(details.req.level1, 10) +
-    parseInt(details.req.level2, 10) +
-    parseInt(details.req.level3, 10);
-  const currentAmmount =
-    parseInt(item.blocksDone?._attributes?.level1, 10) +
-    parseInt(item.blocksDone?._attributes?.level2, 10) +
-    parseInt(item.blocksDone?._attributes?.level3, 10);
+  const requiredAmmount = details.req.total;
+  const currentAmmount = finished
+    ? details.req.total
+    : parseInt(item.blocksDone?._attributes?.level1, 10) +
+      parseInt(item.blocksDone?._attributes?.level2, 10) +
+      parseInt(item.blocksDone?._attributes?.level3, 10);
 
-  const percentage = currentAmmount
+  const percentage = finished
+    ? 100
+    : currentAmmount
     ? Math.floor((currentAmmount / requiredAmmount) * 100)
     : 0;
 
@@ -34,6 +34,7 @@ const ResearchItem = ({ tree, item, current }) => {
     editGameData({
       type: `${target.dataset.action}Research`,
       id: target.parentNode.dataset.techid,
+      index,
       level: `level${target.parentNode.dataset.level}`,
     });
   };
@@ -42,7 +43,8 @@ const ResearchItem = ({ tree, item, current }) => {
     <div
       className={clsx(
         styles.wrapper,
-        techId === current ? styles.active : null,
+        finished && styles.finished,
+        current && styles.active,
       )}
     >
       <span>{details.name || "Unknown"}</span>
@@ -53,18 +55,21 @@ const ResearchItem = ({ tree, item, current }) => {
             techId={techId}
             onChange={handleChange}
             ammount={item.blocksDone?._attributes?.level1}
+            max={details.req.level1}
           />
           <ResearchFlask
             level={2}
             techId={techId}
             onChange={handleChange}
             ammount={item.blocksDone?._attributes?.level2}
+            max={details.req.level2}
           />
           <ResearchFlask
             level={3}
             techId={techId}
             onChange={handleChange}
             ammount={item.blocksDone?._attributes?.level3}
+            max={details.req.level3}
           />
         </div>
       )}

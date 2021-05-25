@@ -1,5 +1,8 @@
 .wrapper {
   display: flex;
+}
+.infoBar {
+  display: flex;
   flex-direction: column;
 }
 .wrapper a {
@@ -13,4 +16,8 @@
   display: flex;
   align-items: flex-start;
   height: 2rem;
+}
+.storageSpace {
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -5,6 +5,7 @@
 }
 .inline {
   display: inline-block;
+  align-items: flex-start;
 }
 .lighten {
   background-color: rgba(255,255,255,.2);
