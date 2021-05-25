@@ -42,11 +42,33 @@ const gameReducer = (state, action) => {
       newState.bank.credits = action.value;
       break;
     case "setShipName":
-      const shipIndex = newState.ships.findIndex(
-        (ship) => (ship.name = action.name),
-      );
-      if (shipIndex >= 0) {
-        newState.ships[shipIndex].name = action.value;
+      {
+        const shipIndex = newState.ships.findIndex(
+          (ship) => (ship.name = action.name),
+        );
+        if (shipIndex >= 0) {
+          newState.ships[shipIndex].name = action.value;
+        }
+      }
+      break;
+    case "setSuited":
+      {
+        const shipIndex = newState.ships.findIndex(
+          (ship) => (ship.name = action.ship),
+        );
+        const charIndex = newState.ships[shipIndex]?.characters.findIndex(
+          (char) => char._attributes.name === action.name,
+        );
+
+        if (shipIndex >= 0 && charIndex >= 0) {
+          if (action.value) {
+            newState.ships[shipIndex].characters[charIndex]._attributes.is =
+              "1";
+          } else {
+            delete newState.ships[shipIndex].characters[charIndex]._attributes
+              .is;
+          }
+        }
       }
       break;
     default:

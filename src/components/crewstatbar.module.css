@@ -1,4 +1,11 @@
 .barWrapper {
   width: 95%;
   border: 1px solid var(--main-bg-color);
+  height: 1rem;
+}
+.barWrapper span {
+  position: absolute;
+  font-size: 90%;
+  top: -.1rem;
+  left: .25rem;
 }

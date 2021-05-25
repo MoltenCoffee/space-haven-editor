@@ -1,8 +1,8 @@
 const attributes = {
-  210: "bravery",
-  212: "zest",
-  213: "intelligence",
-  214: "perception",
+  210: { name: "bravery" },
+  212: { name: "zest" },
+  213: { name: "intelligence" },
+  214: { name: "perception" },
 };
 
 export default attributes;

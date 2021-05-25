@@ -12,7 +12,7 @@ const Storage = ({ inventory, rules, eatAllowed }) => {
       {Array.isArray(inventory) &&
         inventory?.map((item) => (
           <div>
-            {elements[item._attributes?.elementaryId] || "Unknown"}:
+            {elements[item._attributes?.elementaryId]?.name || "Unknown"}:
             {item._attributes?.inStorage}
           </div>
         ))}

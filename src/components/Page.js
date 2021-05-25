@@ -15,7 +15,7 @@ const Page = ({ children, center }) => {
       </div>
     </main>
   ) : (
-    <main className={clsx(styles.wrapper, center && styles.center)}>
+    <main className={clsx(styles.wrapper, styles.withScroll, center && styles.center)}>
       {children}
     </main>
   );

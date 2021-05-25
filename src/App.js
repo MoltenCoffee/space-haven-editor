@@ -17,6 +17,7 @@ import Edit from "./pages/Edit";
 import Crew from "./pages/Crew";
 import Research from "./pages/Research";
 import Ships from "./pages/Ships";
+import Reference from "./pages/Reference";
 
 const Internal = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/reference" element={<Reference />} />
               <InternalRoute path="edit/*" element={<Internal />} />
             </Routes>
             <Footer />

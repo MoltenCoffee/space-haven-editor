@@ -1,0 +1,15 @@
+.table {
+  border-collapse: collapse;
+}
+.table th {
+  user-select: none;
+  cursor: pointer;
+}
+.table td, .table th {
+  border: solid 1px rgba(0,0,0,.2);
+  min-width: 6rem;
+  padding: .25rem;
+}
+.table tr:nth-child(odd) {
+  background-color: rgba(255,255,255,.1);
+}

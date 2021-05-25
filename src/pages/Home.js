@@ -27,6 +27,18 @@ const Home = () => {
         </p>
         <h3>
           <FormattedMessage
+            id="view_references"
+            defaultMessage="View reference charts"
+          />
+        </h3>
+        <p>
+          If you want to edit your saves manually, the reference charts with
+          ID's and corresponding objects, tech, conditions and more might be
+          useful.
+        </p>
+        <Button to="/reference">References</Button>
+        <h3>
+          <FormattedMessage
             id="upload_file"
             defaultMessage="Upload save file"
           />
