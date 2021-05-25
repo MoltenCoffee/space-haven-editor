@@ -13,6 +13,7 @@ const parseGameData = (data) => {
       const shipObject = {};
       shipObject.name = ship._attributes.sname;
       shipObject.id = ship._attributes.sid;
+      shipObject.tiles = ship.e;
       shipObject.characters = ship.characters?.c || [];
       // shipObject.monsters = ship.characters?.c || [];
       // shipObject.robots = ship.characters?.c || [];

@@ -9,12 +9,10 @@ const Ships = () => {
     gameData: { ships },
   } = useContext(SaveContext);
 
-  console.log(ships);
-
   return (
     <Page>
       {ships?.map((ship) => (
-        <Ship name={ship.name} crew={ship.characters} />
+        <Ship name={ship.name} crew={ship.characters} tiles={ship.tiles} />
       ))}
     </Page>
   );

@@ -1,28 +1,44 @@
-import { useState, useContext, createRef } from "react";
+import { useState, useContext, useEffect, createRef } from "react";
+import { useWorker } from "@koale/useworker";
 import { FormattedMessage } from "react-intl";
 import { Edit3 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Heading from "./Heading";
+import Storage from "./Storage";
 import styles from "./ship.module.css";
 import { SaveContext } from "../context/SaveContext";
 
-const Ship = ({ name, crew }) => {
+import findStorage from "../lib/findStorage";
+
+const Ship = ({ name, crew, tiles }) => {
   const { editGameData } = useContext(SaveContext);
-  const [edit, setEdit] = useState(false);
+  const [editName, setEditName] = useState(false);
+  const [inventories, setInventories] = useState(null);
+  const [ tileWorker ] = useWorker(findStorage);
   const shipNameRef = createRef();
+
+  useEffect(() => {
+    if (tiles) {
+      const runTileWorker = async () => {
+        setInventories(await tileWorker(tiles))
+      };
+
+      runTileWorker();
+    }
+  }, [tiles])
 
   return (
     <Card>
       <div className={styles.wrapper} id={name}>
         <div className={styles.titleBar}>
-          {edit ? (
+          {editName ? (
             <>
               <input defaultValue={name} ref={shipNameRef} />
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  setEdit(false);
+                  setEditName(false);
                   editGameData({
                     type: "setShipName",
                     value: shipNameRef.current.value,
@@ -35,7 +51,7 @@ const Ship = ({ name, crew }) => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  setEdit(false);
+                  setEditName(false);
                 }}
               >
                 <FormattedMessage id="reset" defaultMessage="Reset" />
@@ -43,12 +59,12 @@ const Ship = ({ name, crew }) => {
             </>
           ) : (
             <>
-              <Heading level={3} noFont style={{ marginRight: ".5rem" }}>
+              <Heading level={3} style={{ marginRight: ".5rem" }}>
                 {name}
               </Heading>
               <Edit3
                 onClick={() => {
-                  setEdit(true);
+                  setEditName(true);
                 }}
                 height="15"
                 width="15"
@@ -57,7 +73,7 @@ const Ship = ({ name, crew }) => {
           )}
         </div>
         <div>
-          <Heading level={4} noFont>
+          <Heading level={4}>
             <FormattedMessage id="crew" defaultMessage="Crew" />
           </Heading>
           {crew?.map((member) => (
@@ -68,6 +84,16 @@ const Ship = ({ name, crew }) => {
                 </span>
               </Card>
             </Link>
+          ))}
+        </div>
+        <div>
+          <Heading level={4}>Storage</Heading>
+          {!inventories && <Card>Loading..</Card>}
+          {inventories?.map((tile) => (
+            <Storage
+              inventory={tile?.l?.[3]?.feat?.inv?.s}
+              eatAllowed={tile?.l?.[3]?.feat?._attributes?.eatAllowed}
+            />
           ))}
         </div>
       </div>
