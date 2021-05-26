@@ -5,11 +5,23 @@
   "created_by": {
     "defaultMessage": "Created by"
   },
+  "credits_monetary": {
+    "defaultMessage": "Credits"
+  },
   "crew": {
     "defaultMessage": "Crew"
   },
   "discard": {
     "defaultMessage": "Discard"
+  },
+  "disclaimer": {
+    "defaultMessage": "Disclaimer"
+  },
+  "download": {
+    "defaultMessage": "Download"
+  },
+  "edit_expl": {
+    "defaultMessage": "Edit what you want, and return here to download the file again"
   },
   "energy": {
     "defaultMessage": "Energy"
@@ -23,6 +35,9 @@
   "gender_male": {
     "defaultMessage": "Male"
   },
+  "general_edits": {
+    "defaultMessage": "General edits"
+  },
   "health": {
     "defaultMessage": "Health"
   },
@@ -34,6 +49,9 @@
   },
   "in_suit": {
     "defaultMessage": "in spacesuit"
+  },
+  "loading_dots": {
+    "defaultMessage": "Loading..."
   },
   "open_save": {
     "defaultMessage": "Open Save"
@@ -51,7 +69,13 @@
     "defaultMessage": "Source Code on GitHub"
   },
   "title": {
-    "defaultMessage": "Space Haven Save Editor"
+    "defaultMessage": "Space Haven Editor"
+  },
+  "upload_file": {
+    "defaultMessage": "Upload save file"
+  },
+  "view_references": {
+    "defaultMessage": "View reference charts"
   },
   "welcome": {
     "defaultMessage": "Welcome!"

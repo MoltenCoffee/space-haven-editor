@@ -11,6 +11,12 @@
       "value": "Created by"
     }
   ],
+  "credits_monetary": [
+    {
+      "type": 0,
+      "value": "Credits"
+    }
+  ],
   "crew": [
     {
       "type": 0,
@@ -21,6 +27,24 @@
     {
       "type": 0,
       "value": "Discard"
+    }
+  ],
+  "disclaimer": [
+    {
+      "type": 0,
+      "value": "Disclaimer"
+    }
+  ],
+  "download": [
+    {
+      "type": 0,
+      "value": "Download"
+    }
+  ],
+  "edit_expl": [
+    {
+      "type": 0,
+      "value": "Edit what you want, and return here to download the file again"
     }
   ],
   "energy": [
@@ -47,6 +71,12 @@
       "value": "Male"
     }
   ],
+  "general_edits": [
+    {
+      "type": 0,
+      "value": "General edits"
+    }
+  ],
   "health": [
     {
       "type": 0,
@@ -69,6 +99,12 @@
     {
       "type": 0,
       "value": "in spacesuit"
+    }
+  ],
+  "loading_dots": [
+    {
+      "type": 0,
+      "value": "Loading..."
     }
   ],
   "open_save": [
@@ -104,7 +140,19 @@
   "title": [
     {
       "type": 0,
-      "value": "Space Haven Save Editor"
+      "value": "Space Haven Editor"
+    }
+  ],
+  "upload_file": [
+    {
+      "type": 0,
+      "value": "Upload save file"
+    }
+  ],
+  "view_references": [
+    {
+      "type": 0,
+      "value": "View reference charts"
     }
   ],
   "welcome": [

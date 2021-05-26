@@ -11,7 +11,7 @@ const Header = () => {
         <NavLink to="/">
           <FormattedMessage
             id="title"
-            defaultMessage="Space Haven Save Editor"
+            defaultMessage="Space Haven Editor"
           />
         </NavLink>
       </Heading>
