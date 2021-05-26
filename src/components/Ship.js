@@ -12,7 +12,7 @@ import { SaveContext } from "../context/SaveContext";
 import findStorage from "../lib/findStorage";
 import ShipImage from "./ShipImage";
 
-const Ship = ({ name, shipId, crew, tiles }) => {
+const Ship = ({ name, shipId, crew, tiles, dimensions }) => {
   const { editGameData } = useContext(SaveContext);
   const [editName, setEditName] = useState(false);
   const [inventories, setInventories] = useState(null);
@@ -91,7 +91,7 @@ const Ship = ({ name, shipId, crew, tiles }) => {
               </Link>
             ))}
           </div>
-          <ShipImage tiles={tiles} />
+          <ShipImage tiles={tiles} dimensions={dimensions} />
         </div>
         <div></div>
         <div>

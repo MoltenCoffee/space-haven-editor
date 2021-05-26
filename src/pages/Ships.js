@@ -12,7 +12,7 @@ const Ships = () => {
   return (
     <Page>
       {ships?.map((ship) => (
-        <Ship name={ship.name} shipId={ship.id} crew={ship.characters} tiles={ship.tiles} />
+        <Ship name={ship.name} shipId={ship.id} crew={ship.characters} tiles={ship.tiles} dimensions={ship.dimensions} />
       ))}
     </Page>
   );

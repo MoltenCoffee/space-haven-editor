@@ -1,4 +1,5 @@
 .image {
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
+  transform: rotate(90deg);
 }

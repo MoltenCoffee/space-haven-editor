@@ -4,20 +4,20 @@ import createShipImage from "../lib/createShipImage";
 
 import styles from "./shipimage.module.css";
 
-const ShipImage = ({ tiles, ...other }) => {
+const ShipImage = ({ tiles, dimensions, ...other }) => {
   const [imageWorker] = useWorker(createShipImage);
   const canvasRef = useRef();
   const [imageBuffer, setImageBuffer] = useState(null);
 
   useEffect(() => {
-    if (!tiles) {
+    if (!tiles || !dimensions) {
       return;
     }
     const runImageWorker = async () => {
-      setImageBuffer(await imageWorker(tiles));
+      setImageBuffer(await imageWorker(tiles, dimensions));
     };
     runImageWorker();
-  }, [tiles, imageWorker])
+  }, [tiles, dimensions, imageWorker])
 
   useEffect(() => {
     if (!imageBuffer) {

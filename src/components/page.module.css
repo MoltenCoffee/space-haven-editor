@@ -18,5 +18,5 @@
   flex-direction: column;
 }
 .withScroll {
-  overflow-y: scroll;
+  overflow: scroll;
 }

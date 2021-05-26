@@ -1,8 +1,13 @@
 const elements = {
   15: { name: "Root vegetables" },
   16: { name: "Water" },
+  // 34: { name: "Power" },
   40: { name: "Ice" },
+  // 63: { name: "Oxygen" },
+  // 64: { name: "CO2" },
   71: { name: "Bio Matter" },
+  // 73: { name: "Heat" },
+  // 77: { name: "Smoke" },
   127: { name: "Rubble" },
   157: { name: "Base Metals" },
   158: { name: "Energium" },
@@ -25,9 +30,12 @@ const elements = {
   728: { name: "SMG" },
   729: { name: "Shotgun" },
   760: { name: "Five-Seven Pistol" },
-  930: { name: "Techblock/Tech-Blöcke" },
+  930: { name: "Techblock" },
+  // 971: { name: "Hazardous Gas" },
   984: { name: "Monster Meat" },
   985: { name: "Human Meat" },
+  // 1445: { name: "Building tools" },
+  // 1858: { name: "Credits" },
   1759: { name: "Hull Block" },
   1873: { name: "Infra Scrap" },
   1874: { name: "Soft Scrap" },
@@ -46,8 +54,10 @@ const elements = {
   1955: { name: "Monster Corpse" },
   2053: { name: "Medical Supplies" },
   2058: { name: "IV Fluid" },
+  // 2452: { name: "Water vapor" },
   2657: { name: "Nuts and Seeds" },
   2475: { name: "Fertilizer" },
+  2715: { name: "Explosive Ammunition" },
 };
 
 export default elements;

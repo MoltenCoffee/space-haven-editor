@@ -1,0 +1,28 @@
+const traits = {
+  191: { name: "Hero" },
+  655: { name: "Wimp" },
+  656: { name: "Clumsy" },
+  1034: { name: "Suicidal" },
+  1035: { name: "Smart" },
+  1036: { name: "Bloodlust" },
+  1037: { name: "Antisocial" },
+  1038: { name: "Needy" },
+  1039: { name: "Fast Learner" },
+  1040: { name: "Lazy" },
+  1041: { name: "Hard Working" },
+  1042: { name: "Psychopath" },
+  1043: { name: "Peace-loving" },
+  1044: { name: "Iron-willed" },
+  1045: { name: "Spacefarer" },
+  1046: { name: "Confident" },
+  1047: { name: "Neurotic" },
+  1048: { name: "Charming" },
+  1533: { name: "Iron Stomach" },
+  1534: { name: "Nyctophilia" },
+  1535: { name: "Minimalist" },
+  1560: { name: "Talkative" },
+  1562: { name: "Gourmand" },
+  2082: { name: "Alien lover" },
+};
+
+export default traits;
