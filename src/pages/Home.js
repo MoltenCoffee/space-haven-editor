@@ -22,8 +22,8 @@ const Home = () => {
           <FormattedMessage id="welcome" defaultMessage="Welcome!" />
         </h2>
         <p>
-          This website is still under development, figuring out how the save
-          files work and what values map to what consequences in-game.
+          This website is still under development, but feel free to look around and try it out.<br />
+          <b>Always</b> backup your saves!
         </p>
         <h3>
           <FormattedMessage

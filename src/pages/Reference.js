@@ -13,7 +13,7 @@ import crops from "../data/crops";
 
 const Reference = () => {
   return (
-    <Page>
+    <Page withScroll>
       <Heading level={2}>References</Heading>
       <div style={{ display: "flex", wrap: "wrap", alignItems: "flex-start" }}>
         <RefCard title="Research" data={research[2535]} />

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import styles from "./page.module.css";
 import SideBar from "./SideBar";
 
-const Page = ({ children, center }) => {
+const Page = ({ children, center, withScroll = false }) => {
   const location = useLocation();
   const isEdit = location.pathname.startsWith("/edit");
 
@@ -15,7 +15,7 @@ const Page = ({ children, center }) => {
       </div>
     </main>
   ) : (
-    <main className={clsx(styles.wrapper, styles.withScroll, center && styles.center)}>
+    <main className={clsx(styles.wrapper, withScroll && styles.withScroll, center && styles.center)}>
       {children}
     </main>
   );
