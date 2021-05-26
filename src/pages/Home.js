@@ -23,7 +23,8 @@ const Home = () => {
         </h2>
         <p>
           This website is still under development, but feel free to look around and try it out.<br />
-          <b>Always</b> backup your saves!
+          <b>Always</b> backup your saves!<br /><br />
+          Compatible with versions 0.12.2 and 0.12.3. Other versions haven't been tested.
         </p>
         <h3>
           <FormattedMessage
