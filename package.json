@@ -1,7 +1,9 @@
 {
   "name": "space-haven-editor",
+  "description": "The first online savegame editor for Space Haven",
   "version": "0.1.0",
   "private": true,
+  "license": "EUPL-1.2",
   "dependencies": {
     "@koale/useworker": "^4.0.2",
     "@testing-library/jest-dom": "^5.12.0",
