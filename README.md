@@ -4,6 +4,7 @@ The first online savegame editor for Space Haven.
 
 > *This webapp is not supported or endorsed by BugByte or Space Haven in any way*
 
+[Try it out at spacehaven-editor.com](spacehaven-editor.com)!
 ## License
 
 The source code is licensed under the [EUPL, version 1.2](https://opensource.org/licenses/EUPL-1.2).

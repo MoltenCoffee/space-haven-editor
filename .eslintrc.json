@@ -1,0 +1,32 @@
+{
+  "plugins": [
+    "react",
+    "jest",
+    "postcss-modules"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "react-app",
+    "plugin:jest/recommended",
+    "plugin:postcss-modules/recommended"
+  ],
+  "rules": {
+    "no-eval": "error",
+    "react/display-name": 0,
+    "react/no-typos": "error",
+    "react/self-closing-comp": [
+      "warn",
+      {
+        "component": true,
+        "html": false
+      }
+    ],
+    "react/no-deprecated": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
