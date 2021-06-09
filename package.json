@@ -29,15 +29,9 @@
     "compile-lang": "formatjs compile-folder --ast src/lang src/lang/compiled",
     "postcompile-lang": "node scripts/createLangExport"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
-      ">0.2%",
+      ">1%",
       "not dead",
       "not IE 11",
       "not op_mini all"

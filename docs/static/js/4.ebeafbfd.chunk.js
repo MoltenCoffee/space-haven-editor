@@ -1,0 +1,3 @@
+/*! For license information please see 4.ebeafbfd.chunk.js.LICENSE.txt */
+(this["webpackJsonpspace-haven-editor"]=this["webpackJsonpspace-haven-editor"]||[]).push([[4],{601:function(e,t,i){"use strict";i.r(t);const r=async(e,t,i=e.name)=>{const s=[],a=[];for await(const n of e.getEntries()){const o=`${i}/${n.name}`;n.isFile?a.push(n.getFile().then((t=>(t.directoryHandle=e,Object.defineProperty(t,"webkitRelativePath",{configurable:!0,enumerable:!0,get:()=>o}))))):n.isDirectory&&t&&s.push(r(n,t,o))}return[...(await Promise.all(s)).flat(),...await Promise.all(a)]};t.default=async(e={})=>{e.recursive=e.recursive||!1;const t=await window.chooseFileSystemEntries({type:"open-directory"});return r(t,e.recursive)}}}]);
+//# sourceMappingURL=4.ebeafbfd.chunk.js.map
