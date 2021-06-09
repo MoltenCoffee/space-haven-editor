@@ -1,7 +1,7 @@
 {
   "name": "space-haven-editor",
   "description": "The first online savegame editor for Space Haven",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "license": "EUPL-1.2",
   "dependencies": {
@@ -51,6 +51,7 @@
   "devDependencies": {
     "@formatjs/cli": "^4.2.15",
     "braces": "^3.0.2",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "eslint-plugin-postcss-modules": "^1.2.1"
   }
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy } from "react";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -17,7 +17,9 @@ import Edit from "./pages/Edit";
 import Crew from "./pages/Crew";
 import Research from "./pages/Research";
 import Ships from "./pages/Ships";
-import Reference from "./pages/Reference";
+// import Reference from "./pages/Reference";
+
+const Reference = lazy(() => import("./pages/Reference"));
 
 const Internal = () => {
   return (

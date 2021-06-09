@@ -25,7 +25,11 @@ const Storage = ({ shipId, tileDetails, inventory, rules, eatAllowed }) => {
         )}
         {Array.isArray(inventory) &&
           inventory?.map((item) => (
-            <StorageRow onChange={handleChange} item={item} />
+            <StorageRow
+              key={item._attributes?.elementaryId}
+              onChange={handleChange}
+              item={item}
+            />
           ))}
       </table>
     </Card>

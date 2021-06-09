@@ -33,7 +33,7 @@ const RefCard = ({ title, data }) => {
   const Rows = () => {
     const sorted = sortFunctions[sortBy](data);
     return sorted.map((key) => {
-      return <Row keyId={key} value={data[key]?.name} />;
+      return <Row key={key} keyId={key} value={data[key]?.name} />;
     });
   };
 

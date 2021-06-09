@@ -22,9 +22,14 @@ const Home = () => {
           <FormattedMessage id="welcome" defaultMessage="Welcome!" />
         </h2>
         <p>
-          This website is still under development, but feel free to look around and try it out.<br />
-          <b>Always</b> backup your saves!<br /><br />
-          Compatible with versions 0.12.2 and 0.12.3. Other versions haven't been tested.
+          This website is still under development, but feel free to look around
+          and try it out.
+          <br />
+          <b>Always</b> backup your saves!
+          <br />
+          <br />
+          Compatible with versions 0.12.2 and 0.12.3. Other versions
+          haven&apos;t been tested.
         </p>
         <h3>
           <FormattedMessage
@@ -34,8 +39,8 @@ const Home = () => {
         </h3>
         <p>
           If you want to edit your saves manually, the reference charts with
-          ID's and corresponding objects, tech, conditions and more might be
-          useful.
+          ID&apos;s and corresponding objects, tech, conditions and more might
+          be useful.
         </p>
         <Button to="/reference">References</Button>
         <h3>
@@ -53,10 +58,12 @@ const Home = () => {
               <br />
               <br />
               The install location can be found by right-clicking the game in
-              your steam library, 'manage' &gt; 'browse local files'.
+              your steam library, &lsquo;manage&rsquo; &gt; &lsquo;browse local
+              files&rsquo;.
               <br />
               <br />
-              The save folder is either 'save' or 'autosaveX'
+              The save folder is either &lsquo;save&rsquo; or
+              &lsquo;autosaveX&rsquo;
             </p>
             <p>This app works best (by a small margin) in Chrome</p>
             <Upload />

@@ -1,9 +1,5 @@
 {
-  "plugins": [
-    "react",
-    "jest",
-    "postcss-modules"
-  ],
+  "plugins": ["react", "jest", "postcss-modules"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -15,6 +11,7 @@
     "no-eval": "error",
     "react/display-name": 0,
     "react/no-typos": "error",
+    "react/prop-types": "off",
     "react/self-closing-comp": [
       "warn",
       {
@@ -22,7 +19,8 @@
         "html": false
       }
     ],
-    "react/no-deprecated": "warn"
+    "react/no-deprecated": "warn",
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "react": {
