@@ -1,4 +1,4 @@
-import { useState, lazy } from "react";
+import { useState, useEffect, lazy } from "react";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -36,6 +36,10 @@ const App = () => {
   const [locale, setLocale] = useState(
     localStorage.getItem(LOCALE_STORAGE_KEY) || null,
   );
+
+  useEffect(() => {
+    document.getElementById("initialTitle").remove();
+  }, []);
 
   return (
     <IntlProvider
