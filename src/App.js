@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -12,25 +12,23 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 
-const Home = lazy(() => import("./pages/Home"));
-const Edit = lazy(() => import("./pages/Edit"));
-const Crew = lazy(() => import("./pages/Crew"));
-const Research = lazy(() => import("./pages/Research"));
-const Ships = lazy(() => import("./pages/Ships"));
-// import Reference from "./pages/Reference";
+import Home from "./pages/Home";
+import Edit from "./pages/Edit";
+import Crew from "./pages/Crew";
+import Research from "./pages/Research";
+import Ships from "./pages/Ships";
+import Reference from "./pages/Reference";
 
-const Reference = lazy(() => import("./pages/Reference"));
+// const Reference = lazy(() => import("./pages/Reference"));
 
 const Internal = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<Edit />} />
-        <Route path="crew" element={<Crew />} />
-        <Route path="research" element={<Research />} />
-        <Route path="ships" element={<Ships />} />
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Edit />} />
+      <Route path="crew" element={<Crew />} />
+      <Route path="research" element={<Research />} />
+      <Route path="ships" element={<Ships />} />
+    </Routes>
   );
 };
 
