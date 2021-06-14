@@ -22,6 +22,9 @@ const Home = () => {
           <FormattedMessage id="welcome" defaultMessage="Welcome!" />
         </h2>
         <p>
+          The first online savegame editor for the game Space Haven by Bugbyte.
+        </p>
+        <p>
           This website is still under development, but feel free to look around
           and try it out.
           <br />
