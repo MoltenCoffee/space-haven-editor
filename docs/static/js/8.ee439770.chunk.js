@@ -1,0 +1,3 @@
+/*! For license information please see 8.ee439770.chunk.js.LICENSE.txt */
+(this["webpackJsonpspace-haven-editor"]=this["webpackJsonpspace-haven-editor"]||[]).push([[8],{122:function(e,t,c){"use strict";c.r(t),t.default=async function(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};Array.isArray(t)&&(t=t[0]);const c=document.createElement("a");c.download=t.fileName||"Untitled",c.href=URL.createObjectURL(e);const n=()=>{"function"==typeof a&&a()},a=t.legacySetup&&t.legacySetup(n,(()=>a(reject)),c);return c.addEventListener("click",(()=>{setTimeout((()=>URL.revokeObjectURL(c.href)),3e4),n()})),c.click(),null}}}]);
+//# sourceMappingURL=8.ee439770.chunk.js.map
