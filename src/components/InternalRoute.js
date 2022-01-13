@@ -1,15 +1,11 @@
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { SaveContext } from "../context/SaveContext";
 
-const InternalRoute = ({ element, fallback }) => {
+const InternalRoute = ({ fallback }) => {
   const { gameData } = useContext(SaveContext);
 
-  if (!fallback) {
-    fallback = <Navigate to="/" />;
-  }
-
-  return gameData.ships ? element : fallback;
+  return gameData.ships ? <Outlet /> : fallback || <Navigate to="/" />;
 };
 
 export default InternalRoute;

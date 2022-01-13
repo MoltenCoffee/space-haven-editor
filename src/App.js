@@ -21,24 +21,13 @@ import Reference from "./pages/Reference";
 
 // const Reference = lazy(() => import("./pages/Reference"));
 
-const Internal = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Edit />} />
-      <Route path="crew" element={<Crew />} />
-      <Route path="research" element={<Research />} />
-      <Route path="ships" element={<Ships />} />
-    </Routes>
-  );
-};
-
 const App = () => {
   const [locale, setLocale] = useState(
     localStorage.getItem(LOCALE_STORAGE_KEY) || null,
   );
 
   useEffect(() => {
-    document.getElementById("initialTitle").remove();
+    document.getElementById("initialTitle")?.remove();
   }, []);
 
   return (
@@ -54,7 +43,12 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/reference" element={<Reference />} />
-              <InternalRoute path="edit/*" element={<Internal />} />
+              <Route path="/edit" element={<InternalRoute />}>
+                <Route path="/edit/" element={<Edit />} />
+                <Route path="/edit/crew" element={<Crew />} />
+                <Route path="/edit/research" element={<Research />} />
+                <Route path="/edit/ships" element={<Ships />} />
+              </Route>
             </Routes>
             <Footer />
           </Layout>

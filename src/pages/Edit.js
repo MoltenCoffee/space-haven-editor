@@ -8,6 +8,9 @@ import { SaveContext } from "../context/SaveContext";
 const Edit = () => {
   const { gameData, editGameData, retrieveGameData } = useContext(SaveContext);
   const { bank } = gameData;
+
+  console.log("Hello")
+
   return (
     <Page>
       <h2>
