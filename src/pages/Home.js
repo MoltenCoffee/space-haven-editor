@@ -55,9 +55,9 @@ const Home = () => {
         {!saveData ? (
           <>
             <p>
-              Select the directory:
+              Select the save file:
               <br />
-              <i>-install location-/savegames/-save name-/-save folder-</i>
+              <i>-install location-/savegames/-save name-/-save folder-/game</i>
               <br />
               <br />
               The install location can be found by right-clicking the game in
