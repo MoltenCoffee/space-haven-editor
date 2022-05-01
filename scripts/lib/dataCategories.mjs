@@ -7,6 +7,7 @@ const defaultParser = (
     nameObject = "name",
     nameIdKey = "tid",
     objectIdKey = "id",
+    additionalProperties = [],
   },
 ) => {
   const data = {};
@@ -16,6 +17,12 @@ const defaultParser = (
       data[item._attributes[objectIdKey]] = {
         name: txt[nameId] || null,
       };
+
+      if (additionalProperties.length) {
+        additionalProperties.forEach(({ tag, parser }) => {
+          data[item._attributes[objectIdKey]][tag] = parser(item);
+        });
+      }
     },
   );
   return data;
@@ -73,6 +80,38 @@ const dataCategories = [
     parse: (obj, txt) =>
       defaultParser(obj, txt, {
         categoryName: "Tech",
+        additionalProperties: [
+          {
+            tag: "req",
+            parser: (item) => {
+              if (!item?.stages?.l) return null;
+
+              if (Array.isArray(item.stages.l)) {
+                return (
+                  item.stages.l.map((stage) => {
+                    if (!stage.labPoints?._attributes) return null;
+                    return {
+                      ...stage.labPoints?._attributes,
+                      total: Object.values(stage.labPoints?._attributes).reduce(
+                        (a, b) => a + b,
+                        0,
+                      ),
+                    };
+                  }) || null
+                );
+              }
+
+              if (!item.stages.l.labPoints) return null;
+
+              return {
+                ...item.stages.l.labPoints?._attributes,
+                total: Object.values(
+                  item.stages.l.labPoints?._attributes,
+                ).reduce((a, b) => a + b, 0),
+              };
+            },
+          },
+        ],
       }),
   },
   {
@@ -83,16 +122,6 @@ const dataCategories = [
         objectIdKey: "cid",
       }),
   },
-  // {
-  //   tag: "robots",
-  //   parse: (obj, txt) =>
-  //     defaultParser(obj, txt, {
-  //       categoryName: "Robot",
-  //       itemName: "robot",
-  //       objectIdKey: "cid",
-  //       // nameObject: "nameInitials",
-  //     }),
-  // },
   {
     tag: "conditions",
     parse: (obj, txt) =>
