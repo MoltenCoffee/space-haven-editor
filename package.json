@@ -31,7 +31,9 @@
     "extract-lang": "formatjs extract src/**/[A-Z]*.js --out-file src/lang/en-US.json",
     "compile-lang": "formatjs compile-folder --ast src/lang src/lang/compiled",
     "postcompile-lang": "node scripts/createLangExport",
-    "generate-credits": "npx @opengovsg/credits-generator"
+    "generate-credits": "npx @opengovsg/credits-generator",
+    "get-game-data": "node scripts/getFiles.mjs",
+    "extract-game-data": "node scripts/getDataFromFiles.mjs"
   },
   "browserslist": {
     "production": [

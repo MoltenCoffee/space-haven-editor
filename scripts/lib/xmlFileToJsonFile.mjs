@@ -8,7 +8,6 @@ const xmlFileToJsonFile = async (src, dest, objParser) => {
     ignoreAttributes: false,
     parseAttributeValue: true,
     parseTagValue: true,
-    processEntities: false,
     trimValues: true,
     attributesGroupName: "_attributes",
     attributeNamePrefix: "",
