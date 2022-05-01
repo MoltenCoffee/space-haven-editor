@@ -137,6 +137,20 @@ const gameReducer = (state, action) => {
       }
       return newState;
     },
+    nudge: () => {
+      const shipIndex = newState.ships.findIndex(
+        (ship) => ship.name === action.ship,
+      );
+      if (shipIndex >= 0) {
+        let newTiles = [... newState.ships[shipIndex].tiles];
+        newTiles = newTiles.map(tile => {
+          let newTile = parse(tile, action.value);
+          return newTile;
+        });
+        newState.ships[shipIndex].tiles = newTiles;
+      }
+      return newState;
+    },
   };
 
   if (!actions[action.type]) {
@@ -197,5 +211,28 @@ const SaveProvider = ({ children }) => {
     </SaveContext.Provider>
   );
 };
+
+const parse = (obj, dir) => {
+  let children = Object.keys(obj);
+  // let ret = {...obj};
+
+  children.forEach(child => {
+    if (child == '_attributes') {
+      if (obj._attributes?.sh != "61504" && // not border
+      Object.prototype.hasOwnProperty.call(obj._attributes, 'x')) { // has position
+        switch (dir) {
+          case 'left':  obj._attributes.x = '' + (parseInt(obj._attributes.x) - 1); break;
+          case 'right': obj._attributes.x = '' + (parseInt(obj._attributes.x) + 1); break;
+          case 'up':    obj._attributes.y = '' + (parseInt(obj._attributes.y) + 1); break;
+          case 'down':  obj._attributes.y = '' + (parseInt(obj._attributes.y) - 1); break;
+        }
+      }
+    } else {
+      obj[child] = parse(obj[child], dir);
+    }
+  });
+
+  return obj;
+}
 
 export default SaveProvider;
