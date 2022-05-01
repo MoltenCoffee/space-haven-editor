@@ -142,12 +142,34 @@ const gameReducer = (state, action) => {
         (ship) => ship.name === action.ship,
       );
       if (shipIndex >= 0) {
-        let newTiles = [... newState.ships[shipIndex].tiles];
+        let thisShip = newState.ships[shipIndex];
+
+        let newTiles = [... thisShip.tiles],
+          newRoof = [... thisShip.roof],
+          newItems = thisShip.items ? [... thisShip.items] : [];
+
+        // base (hull, buildings)
         newTiles = newTiles.map(tile => {
           let newTile = parse(tile, action.value);
           return newTile;
         });
         newState.ships[shipIndex].tiles = newTiles;
+
+        // roof
+        newRoof = newRoof.map(roof => {
+          let roofTile = parse(roof, action.value);
+          return roofTile;
+        });
+        newState.ships[shipIndex].roof = newRoof;
+
+        // items, if any
+        if (newItems) {
+          newItems = newItems.map(item => {
+            let newItem = parse(item, action.value);
+            return newItem;
+          });
+          newState.ships[shipIndex].items = newItems;
+        }
       }
       return newState;
     },
@@ -212,19 +234,31 @@ const SaveProvider = ({ children }) => {
   );
 };
 
-const parse = (obj, dir) => {
+const parse = (obj, dir, skip = false) => {
+  let skipList = ['bo']; // array of elements to skip
   let children = Object.keys(obj);
-  // let ret = {...obj};
 
   children.forEach(child => {
-    if (child == '_attributes') {
-      if (obj._attributes?.sh != "61504" && // not border
-      Object.prototype.hasOwnProperty.call(obj._attributes, 'x')) { // has position
-        switch (dir) {
-          case 'left':  obj._attributes.x = '' + (parseInt(obj._attributes.x) - 1); break;
-          case 'right': obj._attributes.x = '' + (parseInt(obj._attributes.x) + 1); break;
-          case 'up':    obj._attributes.y = '' + (parseInt(obj._attributes.y) + 1); break;
-          case 'down':  obj._attributes.y = '' + (parseInt(obj._attributes.y) - 1); break;
+    if (skipList.indexOf(child) !== -1) { // skip certain elements
+      obj[child] = parse(obj[child], dir, true);
+    } else if (child == '_attributes') {
+      if (obj._attributes?.sh !== "61504" && !skip) {
+        if (Object.prototype.hasOwnProperty.call(obj._attributes, 'x')) { // has x,y position
+          if (obj._attributes.x.indexOf('.') > 0 || obj._attributes.y.indexOf('.') > 0) { // floats for item position
+            switch (dir) {
+              case 'left':  obj._attributes.x = '' + (parseFloat(obj._attributes.x).toFixed(2) - 1); break;
+              case 'right': obj._attributes.x = '' + (parseFloat(obj._attributes.x).toFixed(2) + 1); break;
+              case 'up':    obj._attributes.y = '' + (parseFloat(obj._attributes.y).toFixed(2) + 1); break;
+              case 'down':  obj._attributes.y = '' + (parseFloat(obj._attributes.y).toFixed(2) - 1); break;
+            }
+          } else {
+            switch (dir) {
+              case 'left':  obj._attributes.x = '' + (parseInt(obj._attributes.x) - 1); break;
+              case 'right': obj._attributes.x = '' + (parseInt(obj._attributes.x) + 1); break;
+              case 'up':    obj._attributes.y = '' + (parseInt(obj._attributes.y) + 1); break;
+              case 'down':  obj._attributes.y = '' + (parseInt(obj._attributes.y) - 1); break;
+            }
+          }
         }
       }
     } else {
