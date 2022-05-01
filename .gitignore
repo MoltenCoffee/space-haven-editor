@@ -25,3 +25,5 @@ yarn-error.log*
 *.xml
 !browserconfig.xml
 !sitemap.xml
+
+/temp
