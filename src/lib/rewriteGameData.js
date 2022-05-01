@@ -12,6 +12,10 @@ const rewriteGameData = (file, data) => {
 
     ship.e = edited.tiles;
 
+    ship.roof.e = edited.roof;
+    
+    ship.items.i = edited.items;
+
     ship._attributes.sname = edited.name;
 
     ship.characters.c = edited.characters;

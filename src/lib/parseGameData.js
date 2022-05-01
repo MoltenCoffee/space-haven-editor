@@ -14,6 +14,7 @@ const parseGameData = (data) => {
       shipObject.name = ship._attributes.sname;
       shipObject.id = ship._attributes.sid;
       shipObject.tiles = ship.e;
+      shipObject.roof = ship.roof.e;
       shipObject.dimensions = {
         x: parseInt(ship._attributes.sx, 10),
         y: parseInt(ship._attributes.sy, 10),
@@ -21,7 +22,8 @@ const parseGameData = (data) => {
       shipObject.characters = ship.characters?.c || [];
       shipObject.monsters = ship.characters?.m || [];
       shipObject.robots = ship.characters?.r || [];
-
+      shipObject.items = ship.items?.i || [];
+      
       return shipObject;
     });
   }
