@@ -1,5 +1,5 @@
 .image {
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
-  transform: rotate(90deg);
+  transform: rotate(180deg) scaleX(-1);
 }
