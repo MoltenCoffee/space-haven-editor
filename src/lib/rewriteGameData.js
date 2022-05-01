@@ -10,6 +10,8 @@ const rewriteGameData = (file, data) => {
       return item.id === ship._attributes.sid;
     });
 
+    ship.e = edited.tiles;
+
     ship._attributes.sname = edited.name;
 
     ship.characters.c = edited.characters;
