@@ -27,7 +27,7 @@ const Ship = ({ name, shipId, crew, tiles, dimensions }) => {
 
       runTileWorker();
     }
-  }, [tiles]);
+  }, [tileWorker, tiles]);
 
   return (
     <Card>

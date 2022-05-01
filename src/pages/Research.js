@@ -23,7 +23,7 @@ const Research = () => {
       };
       runPartition();
     }
-  }, [research.states]);
+  }, [partitionWorker, research.states]);
 
   return (
     <Page>
