@@ -6,10 +6,12 @@ import StreamZip from "node-stream-zip";
 
 import checkGameLocation from "./lib/checkGameLocation.mjs";
 import getDevSettings from "./lib/getDevSettings.mjs";
+import xmlFileToJsonFile from "./lib/xmlFileToJsonFile.mjs";
+import parseTexts from "./lib/parseTexts.mjs";
 
 const zippedFiles = [
   { src: "library/haven", target: "haven.xml" },
-  { src: "library/texts", target: "texts.xml" },
+  { src: "library/texts", target: "texts.xml", parser: parseTexts },
 ];
 
 const main = async () => {
@@ -34,6 +36,16 @@ const main = async () => {
   );
 
   await zip.close();
+
+  await Promise.all(
+    zippedFiles.map(({ target, parser }) =>
+      xmlFileToJsonFile(
+        join(targetDir, target),
+        join(targetDir, target.replace(".xml", ".json")),
+        parser || null,
+      ),
+    ),
+  );
 };
 
 main();
