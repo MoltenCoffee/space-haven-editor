@@ -120,6 +120,10 @@ const dataCategories = [
       defaultParser(obj, txt, {
         categoryName: "Craft",
         objectIdKey: "cid",
+        additionalProperties: [
+          { tag: "passengers", parser: (item) => item._attributes.passengers },
+          { tag: "type", parser: (item) => item._attributes.type },
+        ],
       }),
   },
   {
@@ -128,6 +132,47 @@ const dataCategories = [
       defaultParser(obj, txt, {
         categoryName: "CharacterCondition",
         itemName: "condition",
+        additionalProperties: [
+          {
+            tag: "human",
+            parser: (item) => item.applicableTo?._attributes?.h === 1,
+          },
+          {
+            tag: "monster",
+            parser: (item) => item.applicableTo?._attributes?.m === 1,
+          },
+          {
+            tag: "robot",
+            parser: (item) => item.applicableTo?._attributes?.r === 1,
+          },
+          {
+            tag: "a",
+            parser: (item) => item.applicableTo?._attributes?.a === 1,
+          },
+          {
+            tag: "affects",
+            parser: (item) => {
+              if (!item.moodAffects?.l) return null;
+              const affects = Array.isArray(item.moodAffects.l)
+                ? item.moodAffects.l
+                : [item.moodAffects.l];
+
+              const data = {};
+              affects.forEach((affect) => {
+                const { type, change } = affect._attributes;
+                if (change === 0 && affect.range) {
+                  const { min, max } = affect.range._attributes;
+                  data[type] = [min, max];
+                } else {
+                  data[type] = change;
+                }
+              });
+              return data;
+            },
+          },
+          { tag: "stackable", parser: (item) => item._attributes.stackable },
+          { tag: "onlyOne", parser: (item) => item._attributes.onlyOne },
+        ],
       }),
   },
   { tag: "skills", path: [] },
