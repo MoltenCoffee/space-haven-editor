@@ -146,6 +146,8 @@ const gameReducer = (state, action) => {
 
         let newTiles = [... thisShip.tiles],
           newRoof = [... thisShip.roof],
+          newChars = [... thisShip.characters],
+          newRobots = thisShip.robots ? [... thisShip.robots] : [],
           newItems = thisShip.items ? [... thisShip.items] : [];
 
         // base (hull, buildings)
@@ -170,6 +172,20 @@ const gameReducer = (state, action) => {
           });
           newState.ships[shipIndex].items = newItems;
         }
+
+        // characters
+        newChars = newChars.map(char => {
+          let newChar = parse(char, action.value);
+          return newChar;
+        });
+        newState.ships[shipIndex].characters = newChars;
+
+        // robots
+        newRobots = newRobots.map(bot => {
+          let newBot = parse(bot, action.value);
+          return newBot;
+        });
+        newState.ships[shipIndex].robots = newRobots;
       }
       return newState;
     },
@@ -235,7 +251,7 @@ const SaveProvider = ({ children }) => {
 };
 
 const parse = (obj, dir, skip = false) => {
-  let skipList = ['bo']; // array of elements to skip
+  let skipList = []; // array of elements to skip
   let children = Object.keys(obj);
 
   children.forEach(child => {
