@@ -33,6 +33,8 @@ const Home = () => {
           <br />
           Compatible with versions 0.12.2 and 0.12.3. Other versions
           haven&apos;t been tested.
+          <br />
+          After the release of <b>Alpha 15</b> this tool will be updated again.
         </p>
         <h3>
           <FormattedMessage
