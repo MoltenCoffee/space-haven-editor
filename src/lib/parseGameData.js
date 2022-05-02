@@ -21,7 +21,7 @@ const parseGameData = (data) => {
       };
       shipObject.characters = ship.characters?.c || [];
       shipObject.monsters = ship.characters?.m || [];
-      shipObject.robots = ship.characters?.r || [];
+      shipObject.robots = ship.robots?.m || [];
       shipObject.items = ship.items?.i || [];
       
       return shipObject;
@@ -35,7 +35,7 @@ const parseGameData = (data) => {
       craftObject.id = craft._attributes.id;
       craftObject.name = craft._attributes.cname || null;
       craftObject.characters = craft.characters?.c || [];
-      craftObject.robots = craft.characters?.r || [];
+      craftObject.robots = craft.robots?.m || [];
 
       return craftObject;
     });
