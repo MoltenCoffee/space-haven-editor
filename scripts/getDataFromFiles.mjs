@@ -9,7 +9,7 @@ const main = async () => {
   const dir = dirname(fileURLToPath(import.meta.url));
   const rootDir = resolve(dir, "..");
   const tempDir = join(rootDir, "temp");
-  const dataDir = join(rootDir, "data");
+  const dataDir = join(rootDir, "src", "data");
   await mkdir(dataDir, { recursive: true });
 
   if (!(await checkTempFiles(tempDir))) {

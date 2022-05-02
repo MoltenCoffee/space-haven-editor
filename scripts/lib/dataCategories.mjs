@@ -184,6 +184,30 @@ const dataCategories = [
         itemName: "trait",
       }),
   },
+  {
+    tag: "elements",
+    parse: (obj, txt) => {
+      const data = {};
+      obj.data.Element.me.forEach((item) => {
+        const nameId = item.objectInfo?.name?._attributes?.tid;
+
+        let type;
+        if (!nameId) {
+          if (Array.isArray(item.data.l)) {
+            type = item.data.l.map((typeItem) => typeItem._attributes.type);
+          } else {
+            type = item.data?.l?._attributes?.type || null;
+          }
+        }
+
+        data[item._attributes.mid] = {
+          name: txt[nameId] || null,
+          type: type || null,
+        };
+      });
+      return data;
+    },
+  },
 ];
 
 export default dataCategories;
