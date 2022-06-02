@@ -10,11 +10,18 @@ const rewriteGameData = (file, data) => {
       return item.id === ship._attributes.sid;
     });
 
+    ship.e = edited.tiles;
+
+    ship.roof.e = edited.roof;
+    
+    ship.items.i = edited.items;
+
     ship._attributes.sname = edited.name;
 
     ship.characters.c = edited.characters;
+    
+    ship.robots.m = edited.robots;
     // ship.monsters.c = edited.monsters;
-    // ship.robots.c = edited.robots;
   });
 
   output.game.crafts.c.forEach((craft) => {

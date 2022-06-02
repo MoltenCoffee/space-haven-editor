@@ -137,6 +137,58 @@ const gameReducer = (state, action) => {
       }
       return newState;
     },
+    nudge: () => {
+      const shipIndex = newState.ships.findIndex(
+        (ship) => ship.name === action.ship,
+      );
+      if (shipIndex >= 0) {
+        let thisShip = newState.ships[shipIndex];
+
+        let newTiles = [... thisShip.tiles],
+          newRoof = [... thisShip.roof],
+          newChars = [... thisShip.characters],
+          newRobots = thisShip.robots ? [... thisShip.robots] : [],
+          newItems = thisShip.items ? [... thisShip.items] : [];
+
+        // base (hull, buildings)
+        newTiles = newTiles.map(tile => {
+          let newTile = parse(tile, action.value);
+          return newTile;
+        });
+        newState.ships[shipIndex].tiles = newTiles;
+
+        // roof
+        newRoof = newRoof.map(roof => {
+          let roofTile = parse(roof, action.value);
+          return roofTile;
+        });
+        newState.ships[shipIndex].roof = newRoof;
+
+        // items, if any
+        if (newItems) {
+          newItems = newItems.map(item => {
+            let newItem = parse(item, action.value);
+            return newItem;
+          });
+          newState.ships[shipIndex].items = newItems;
+        }
+
+        // characters
+        newChars = newChars.map(char => {
+          let newChar = parse(char, action.value);
+          return newChar;
+        });
+        newState.ships[shipIndex].characters = newChars;
+
+        // robots
+        newRobots = newRobots.map(bot => {
+          let newBot = parse(bot, action.value);
+          return newBot;
+        });
+        newState.ships[shipIndex].robots = newRobots;
+      }
+      return newState;
+    },
   };
 
   if (!actions[action.type]) {
@@ -197,5 +249,40 @@ const SaveProvider = ({ children }) => {
     </SaveContext.Provider>
   );
 };
+
+const parse = (obj, dir, skip = false) => {
+  let skipList = []; // array of elements to skip
+  let children = Object.keys(obj);
+
+  children.forEach(child => {
+    if (skipList.indexOf(child) !== -1) { // skip certain elements
+      obj[child] = parse(obj[child], dir, true);
+    } else if (child == '_attributes') {
+      if (obj._attributes?.sh !== "61504" && !skip) {
+        if (Object.prototype.hasOwnProperty.call(obj._attributes, 'x')) { // has x,y position
+          if (obj._attributes.x.indexOf('.') > 0 || obj._attributes.y.indexOf('.') > 0) { // floats for item position
+            switch (dir) {
+              case 'left':  obj._attributes.x = '' + (parseFloat(obj._attributes.x).toFixed(2) - 1); break;
+              case 'right': obj._attributes.x = '' + (parseFloat(obj._attributes.x).toFixed(2) + 1); break;
+              case 'up':    obj._attributes.y = '' + (parseFloat(obj._attributes.y).toFixed(2) + 1); break;
+              case 'down':  obj._attributes.y = '' + (parseFloat(obj._attributes.y).toFixed(2) - 1); break;
+            }
+          } else {
+            switch (dir) {
+              case 'left':  obj._attributes.x = '' + (parseInt(obj._attributes.x) - 1); break;
+              case 'right': obj._attributes.x = '' + (parseInt(obj._attributes.x) + 1); break;
+              case 'up':    obj._attributes.y = '' + (parseInt(obj._attributes.y) + 1); break;
+              case 'down':  obj._attributes.y = '' + (parseInt(obj._attributes.y) - 1); break;
+            }
+          }
+        }
+      }
+    } else {
+      obj[child] = parse(obj[child], dir);
+    }
+  });
+
+  return obj;
+}
 
 export default SaveProvider;

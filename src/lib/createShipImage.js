@@ -112,7 +112,7 @@ const createShipImage = (tiles, dimensions) => {
         imgBuffer[pos] = 20;
         imgBuffer[pos + 1] = 20;
         imgBuffer[pos + 2] = 0;
-        imgBuffer[pos + 3] = 0;
+        imgBuffer[pos + 3] = 128;
         continue;
       }
       // Hull blocks

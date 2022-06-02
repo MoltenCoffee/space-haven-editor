@@ -17,6 +17,7 @@ const Storage = ({ shipId, tileDetails, inventory, rules, eatAllowed }) => {
         <span>Direct eat allowed</span>
       </label>
       <table className={styles.table}>
+        <tbody>
         {(!inventory || inventory.length === 0) && (
           <tr>
             <td>Emtpy</td>
@@ -31,6 +32,7 @@ const Storage = ({ shipId, tileDetails, inventory, rules, eatAllowed }) => {
               item={item}
             />
           ))}
+        </tbody>
       </table>
     </Card>
   );

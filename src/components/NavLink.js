@@ -16,7 +16,7 @@ const NavLink = ({ children, to, onClick, icon }) => {
 
   return (
     <li className={styles.box}>
-      <Link to={to} activeClassName={styles.active}>
+      <Link to={to} activeclassname={styles.active}>
         <div className={styles.inner}>
           {icon}
           <span>{children}</span>

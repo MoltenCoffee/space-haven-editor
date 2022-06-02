@@ -92,6 +92,45 @@ const Ship = ({ name, shipId, crew, tiles, dimensions }) => {
             ))}
           </div>
           <ShipImage tiles={tiles} dimensions={dimensions} />
+          <div style={{ textAlign: "center" }}>
+          Nudge<br />
+          <button onClick={(e) => {
+            e.preventDefault();
+            editGameData({
+              type: "nudge",
+              value: 'left',
+              ship: name
+            })
+          }
+          }>⬅️</button>
+          <button onClick={(e) => {
+            e.preventDefault();
+            editGameData({
+              type: "nudge",
+              value: 'up',
+              ship: name
+            })
+          }
+          }>⬆️</button>
+          <button onClick={(e) => {
+            e.preventDefault();
+            editGameData({
+              type: "nudge",
+              value: 'down',
+              ship: name
+            })
+          }
+          }>⬇️</button>
+          <button onClick={(e) => {
+            e.preventDefault();
+            editGameData({
+              type: "nudge",
+              value: 'right',
+              ship: name
+            })
+          }
+          }>➡️</button>
+        </div>
         </div>
         <div></div>
         <div>
